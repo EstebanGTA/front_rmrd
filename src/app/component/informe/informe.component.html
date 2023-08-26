@@ -1,0 +1,148 @@
+<app-navbar></app-navbar>
+<div class="container mt-5">
+  <h1 class="form-title text-center">Informe Diario de Estudiantes</h1>
+  <form (ngSubmit)="onCreate()">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label for="estudiante" class="form-label">Estudiante</label>
+          <input type="text" class="form-control" id="estudiante" name="estudiante" [(ngModel)]="estudiante">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label for="fecha" class="form-label">Fecha</label>
+          <input type="date" class="form-control" id="fecha" name="fecha" [(ngModel)]="fecha">
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label for="instructor" class="form-label">Instructor</label>
+          <input type="text" class="form-control" id="instructor" name="instructor" [(ngModel)]="instructor">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label for="hora" class="form-label">Hora</label>
+          <input type="time" class="form-control" id="hora" name="hora" [(ngModel)]="hora">
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label for="codigo" class="form-label">Código</label>
+          <input type="text" class="form-control" id="codigo" name="codigo" [(ngModel)]="codigo">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label for="materia" class="form-label">Materia</label>
+          <input type="text" class="form-control" id="materia" name="materia" [(ngModel)]="materia">
+        </div>
+      </div>
+    </div>
+    <div class="mb-3">
+      <div class="text-center">
+        <label for="actividadesDiarias" class="form-label fs-4">Actividades Diarias Desarrolladas</label>
+      </div>
+      <div class="mb-3">
+        <label for="temaGeneral" class="form-label">Tema General:</label>
+        <textarea class="form-control" id="temaGeneral" name="temaGeneral" rows="3" [(ngModel)]="tema_general"
+          required></textarea>
+      </div>
+      <div class="mb-3">
+        <label for="temaSecundario" class="form-label">Tema Secundario</label>
+        <textarea class="form-control" id="temaSecundario" name="temaSecundario" rows="3" [(ngModel)]="tema_secundario"
+          required></textarea>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="actitudEstudiante" class="form-label">Actitud del Estudiante</label>
+      <select class="form-select" aria-label="Default select example" name="actitud_estudiante" [(ngModel)]="actitud_estudiante">
+        <option selected disabled>Elegir</option>
+        <option value="Insuficiente">Insuficiente</option>
+        <option value="Regular">Regular</option>
+        <option value="Buena">Buena</option>
+        <option value="Bastante Buena">Bastante Buena</option>
+        <option value="Muy Buena">Muy Buena</option>
+        <option value="Excelente">Excelente</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="tareasEnviadas" class="form-label">Tareas Enviadas</label>
+      <input type="text" class="form-control" id="tareasEnviadas" name="tareasEnviadas" [(ngModel)]="tareas_enviadas">
+    </div>
+    <div class="mb-3">
+      <label for="observacionesGenerales" class="form-label">Observaciones Generales:</label>
+      <div class="mb-3">
+        <label for="bases" class="form-label">Bases</label>
+        <textarea class="form-control" id="bases" name="bases" rows="2" [(ngModel)]="bases"></textarea>
+      </div>
+      <div class="mb-3">
+        <label for="tareas" class="form-label">Tareas</label>
+        <textarea class="form-control" id="tareas" name="tareas" rows="2" [(ngModel)]="tareas"></textarea>
+      </div>
+      <div class="mb-3">
+        <label for="evolucionDiaria" class="form-label">Evolución Diaria</label>
+        <textarea class="form-control" id="evolucionDiaria" name="evolucionDiaria" rows="2" [(ngModel)]="evolucion"></textarea>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label"></label>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Hora y Fecha de Llamada</th>
+            <th scope="col">Representante</th>
+            <th scope="col">Observaciones</th>
+            <th scope="col">Realizado Por</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><input type="datetime-local" class="form-control" name="horaFechaLlamada" [(ngModel)]="hora_fecha_llamada"></td>
+            <td><input type="text" class="form-control" name="representante" [(ngModel)]="representante"></td>
+            <td><textarea class="form-control" name="observacionesLlamada" rows="2" [(ngModel)]="observaciones"></textarea></td>
+            <td><input type="text" class="form-control" name="realizadoPor" [(ngModel)]="realizado_por"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <div class="mb-3 text-center">
+          <hr class="mt-5 text-primary border-2">
+          <label for="firmaEncargado1" class="form-label">Ing. David Robayo</label>
+          <br>
+          <label class="form-label">Director General</label>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="mb-3 text-center">
+          <hr class="mt-5 text-primary border-2">
+          <label for="firmaEncargado2" class="form-label">Tlga. Katherine Rosero</label>
+          <br>
+          <label class="form-label">Coordinador General</label>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="mb-3 text-center">
+          <hr class="mt-5 text-primary border-2">
+          <hr class="mt-4 text-dark border-2">
+          <label for="firmaEstudiante" class="form-label">Instructor</label>
+        </div>
+      </div>
+    </div>
+    <div class="text-center mt-3">
+      <button type="submit" class="btn btn-primary">Guardar Informe</button>
+    </div>
+    <hr>
+  </form>
+</div>

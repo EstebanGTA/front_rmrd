@@ -1,0 +1,161 @@
+<app-navbar></app-navbar>
+<div *ngIf="isAdmin" class="container bgModal col-11 col-sm-6 col-md-10 col-lg-5 my-4 rounded-5 mx-auto">
+  <br>
+  <img
+    src="https://firebasestorage.googleapis.com/v0/b/parte-2-b252a.appspot.com/o/Globales%2FLogo%20empresa2.jpeg?alt=media&token=c41a3a9e-33cd-4f95-b44d-1b32e1aa55a4"
+    class="col-11 col-sm-6 col-md-11 col-lg-11 d-block mx-auto rounded-5 border border-black border-3 logo">
+  <br>
+  <header class="container bgTitulo rounded-4 col-11 mx-auto">
+    <h2 class="text-center text-light ">Matriculación de Estudiantes</h2>
+  </header>
+  <div class="container bgForm col-11 col-sm-6 col-md-10 col-lg-11 mx-auto my-4 rounded-4">
+    <form (ngSubmit)="onCreate()" novalidate class="p-3">
+      <div class="mb-3">
+        <label for="nombreEstudiante" class="form-label fs-5">Nombre del Estudiante:</label>
+        <input type="text" class="form-control border-3 rounded-pill p-1" id="nombreEstudiante" name="nombreEstudiante"
+          [(ngModel)]="nombre_e" />
+      </div>
+      <div class="mb-3">
+        <label for="cedulaEstudiante" class="form-label fs-5">Cédula del Estudiante:</label>
+        <input type="text" class="form-control border-3 rounded-pill p-1" id="cedulaEstudiante"
+          name="cedulaEstudiante" [(ngModel)]="cedula_e" oninput="this.value = this.value.replace(/[^0-9]/g, '').substring(0, 10)" />
+      </div>
+      <div class="mb-3">
+        <label for="emailEstudiante" class="form-label fs-5">Email del Estudiante:</label>
+        <input type="email" class="form-control border-3 rounded-pill p-1" id="emailEstudiante" name="emailEstudiante"
+          [(ngModel)]="email_e" />
+      </div>
+      <div class="mb-3">
+        <label for="edad" class="form-label fs-5">Edad del Estudiante:</label>
+        <input type="text" class="form-control border-3 rounded-pill p-1" id="edad" name="edad"
+          [(ngModel)]="edad_e" oninput="this.value = this.value.replace(/[^0-9]/g, '').substring(0, 2)" />
+      </div>
+      <div class="mb-3">
+        <label for="numCelular" class="form-label fs-5">Número de WhatsApp del Estudiante:</label>
+        <input type="text" class="form-control border-3 rounded-pill p-1" id="numCelular" name="numCelular"
+          [(ngModel)]="numero_contacto" oninput="this.value = this.value.replace(/[^0-9]/g, '').substring(0, 10)" />
+      </div>
+      <div class="mb-3">
+        <label for="nombreRepresentante" class="form-label fs-5">Nombre del Representante:</label>
+        <input type="text" class="form-control border-3 rounded-pill p-1" id="nombreRepresentante"
+          name="nombreRepresentante" [(ngModel)]="nombre_r" />
+      </div>
+      <div class="mb-3">
+        <label for="cedulaRepresentante" class="form-label fs-5">Cédula del Representante:</label>
+        <input maxlength="10" type="text" class="form-control border-3 rounded-pill p-1" id="cedulaRepresentante"
+          name="cedulaRepresentante" [(ngModel)]="cedula_r" oninput="this.value = this.value.replace(/[^0-9]/g, '').substring(0, 10)" />
+      </div>
+      <div class="mb-3">
+        <label for="emailRepresentante" class="form-label fs-5">Email del Representante:</label>
+        <input type="email" class="form-control border-3 rounded-pill p-1" id="emailRepresentante"
+          name="emailRepresentante" [(ngModel)]="email_r" />
+      </div>
+      <div class="mb-3">
+        <label for="numCelular" class="form-label fs-5">Número de WhatsApp del Representante:</label>
+        <input type="text" class="form-control border-3 rounded-pill p-1" id="numCelular" name="numCelular"
+          [(ngModel)]="numero_contactoR" oninput="this.value = this.value.replace(/[^0-9]/g, '').substring(0, 10)" />
+      </div>
+      <div class="mb-3">
+        <label for="institucion" class="form-label fs-5">En que institución esta el estudiante:</label>
+        <input type="text" class="form-control border-3 rounded-pill p-1" id="institucion" name="institucion"
+          [(ngModel)]="institucion" />
+      </div>
+      <div class="mb-3">
+        <div class="row">
+          <div class="col-12 col-sm-6 col-md-4 col-lg-5 mb-3 me-4">
+            <select class="form-select rounded-pill p-1" id="sel1" name="sellist" [(ngModel)]="tipo_institucionId">
+              <option disabled>Tipo de institución</option>
+              <option *ngFor="let tipo of tipoInstList" [value]="tipo.id_tipo_institucion">
+                {{tipo.nombre_tipo_institucion}}
+              </option>
+            </select>
+          </div>
+          <div class="col-12 col-sm-6 col-md-4 col-lg-6">
+            <select class="form-select rounded-pill p-1" id="sel2" name="sellist" [(ngModel)]="seccionId">
+              <option disabled>Sección:</option>
+              <option *ngFor="let sec of seccionList" [value]="sec.id_seccion">
+                {{sec.nombre_seccion}}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="nivelacion" class="form-label fs-5">En que materias necesita nivelación:</label>
+        <input type="text" class="form-control border-3 rounded-pill p-1" id="nivelacion" name="nivelacion"
+          [(ngModel)]="nivelacion_materia" />
+      </div>
+      <div class="mb-1">
+        <label for="nivelacion" class="form-label fs-5">Grado o semestre:</label>
+        <div class="row">
+          <div class="col-12 col-sm-6 col-md-4 col-lg-4 mb-3">
+            <select class="form-select rounded-pill p-1" id="sel3" name="sellist" [(ngModel)]="escuelaId">
+              <option disabled selected>Escuela:</option>
+              <option *ngFor="let escu of escuelaList" [value]="escu.id_escuela">
+                {{escu.nivel_escuela}}
+              </option>
+            </select>
+          </div>
+          <div class="col-12 col-sm-6 col-md-4 col-lg-4 mb-3">
+            <select class="form-select rounded-pill p-1" id="selcole" name="sellist" [(ngModel)]="colegioId">
+              <option disabled selected>Colegio:</option>
+              <option *ngFor="let cole of colegioList" [value]="cole.id_colegio">
+                {{cole.nivel_colegio}}
+              </option>
+            </select>
+          </div>
+          <div class="col-12 col-sm-6 col-md-4 col-lg-4">
+            <select class="form-select rounded-pill p-1" id="seluni" name="sellist" [(ngModel)]="universidadId">
+              <option disabled selected>Universidad:</option>
+              <option *ngFor="let uni of universidadList" [value]="uni.id_universidad">
+                {{uni.nivel_universidad}}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="mb-3">
+        <h5>Modalidad:</h5>
+        <select class="form-select rounded-pill p-1" id="sel2" name="sellist" [(ngModel)]="modalidadId">
+          <option disabled selected>Modalidades:</option>
+          <option *ngFor="let mod of modalidadList" [value]="mod.id_modalidad">
+            {{mod.nombre_modalidad}}
+          </option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <h5>Horario:</h5>
+        <select class="form-select rounded-pill p-1" id="sel2" name="sellist" [(ngModel)]="horarioId">
+          <option disabled selected>Horarios:</option>
+          <option *ngFor="let horario of horarioList" [value]="horario.id_horario">
+            {{horario.tiempo}}
+          </option>
+        </select>
+      </div>
+      <div class="mb-1">
+        <label for="city" class="form-label fs-5">Ciudad:</label>
+        <div class="row">
+          <div class="col-12 col-sm-6 col-md-4 col-lg-5 mb-3 me-4">
+            <input type="text" class="form-control border-3 rounded-pill p-1" id="city" name="city"
+              [(ngModel)]="ciudad" />
+          </div>
+          <div class="col-12 col-sm-6 col-md-4 col-lg-6">
+            <select class="form-select rounded-pill p-1" id="selsecresi" name="sellist" [(ngModel)]="sectorId">
+              <option disabled selected>Sector de residencia:</option>
+              <option *ngFor="let sect of sectorList" [value]="sect.id_sector">
+                {{sect.nombre_sector}}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="direccion" class="form-label fs-5">Dirección:</label>
+        <input type="text" class="form-control border-3 rounded-pill p-1" id="direccion" name="direccion"
+          [(ngModel)]="direccion" />
+      </div>
+      <button type="submit" class="btn btnEnviar d-block mx-auto col-12 rounded-pill text-light p-1">Enviar</button>
+    </form>
+  </div>
+  <br>
+</div>

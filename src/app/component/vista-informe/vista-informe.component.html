@@ -1,0 +1,168 @@
+<div class="container mt-5">
+  <h1 class="form-title text-center">Informe Diario de Estudiantes</h1>
+  <form *ngIf="info">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label for="estudiante" class="form-label">Estudiante</label>
+          <div class="input-group">
+            <p class="form-control" id="estudiante">{{ info.estudiante }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label for="fecha" class="form-label">Fecha</label>
+          <div class="input-group">
+            <p class="form-control" id="fecha">{{ info.fecha }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label for="instructor" class="form-label">Instructor</label>
+          <div class="input-group">
+            <p class="form-control" id="instructor">{{ info.instructor }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label for="hora" class="form-label">Hora</label>
+          <div class="input-group">
+            <p class="form-control" id="hora">{{ info.hora }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label for="codigo" class="form-label">Código</label>
+          <div class="input-group">
+            <p class="form-control" id="codigo">{{ info.codigo }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label for="materia" class="form-label">Materia</label>
+          <div class="input-group">
+            <p class="form-control" id="materia">{{ info.materia }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mb-3">
+      <div class="text-center">
+        <label for="actividadesDiarias" class="form-label fs-4">Actividades Diarias Desarrolladas</label>
+      </div>
+      <div class="mb-3">
+        <label for="temaGeneral" class="form-label">Tema General:</label>
+        <div class="input-group">
+          <p class="form-control" id="temaGeneral">{{ info.tema_general }}</p>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="temaSecundario" class="form-label">Tema Secundario</label>
+        <div class="input-group">
+          <p class="form-control" id="temaSecundario">{{ info.tema_secundario }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="actitudEstudiante" class="form-label">Actitud del Estudiante</label>
+      <div class="input-group">
+        <p class="form-control" id="actitudEstudiante">{{ info.actitud_estudiante }}</p>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="tareasEnviadas" class="form-label">Tareas Enviadas</label>
+      <div class="input-group">
+        <p class="form-control" id="tareasEnviadas">{{ info.tareas_enviadas }}</p>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="observacionesGenerales" class="form-label">Observaciones Generales:</label>
+      <div class="mb-3">
+        <label for="bases" class="form-label">Bases</label>
+        <div class="input-group">
+          <p class="form-control" id="bases">{{ info.bases }}</p>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="tareas" class="form-label">Tareas</label>
+        <div class="input-group">
+          <p class="form-control" id="tareas">{{ info.tareas }}</p>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="evolucionDiaria" class="form-label">Evolución Diaria</label>
+        <div class="input-group">
+          <p class="form-control" id="evolucionDiaria">{{ info.evolucion }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label"></label>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Hora y Fecha de Llamada</th>
+            <th scope="col">Representante</th>
+            <th scope="col">Observaciones</th>
+            <th scope="col">Realizado Por</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><div class="input-group"><p class="form-control">{{info.hora_fecha_llamada}}</p></div></td>
+            <td><div class="input-group"><p class="form-control">{{info.representante}}</p></div></td>
+            <td><div class="input-group"><p class="form-control">{{info.observaciones}}</p></div></td>
+            <td><div class="input-group"><p class="form-control">{{info.realizado_por}}</p></div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <div class="mb-3 text-center">
+          <hr class="mt-5 text-primary border-2">
+          <label for="firmaEncargado1" class="form-label">Ing. David Robayo</label>
+          <br>
+          <label class="form-label">Director General</label>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="mb-3 text-center">
+          <hr class="mt-5 text-primary border-2">
+          <label for="firmaEncargado2" class="form-label">Tlga. Katherine Rosero</label>
+          <br>
+          <label class="form-label">Coordinador General</label>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="mb-3 text-center">
+          <hr class="mt-5 text-primary border-2">
+          <hr class="mt-4 text-dark border-2">
+          <label for="firmaEstudiante" class="form-label">Instructor</label>
+        </div>
+      </div>
+    </div>
+    <div class="text-center mt-3">
+      <button class="btn btn-primary" (click)="volver()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
+          <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+        </svg>
+        Volver
+      </button>
+    </div>
+    <hr>
+  </form>
+</div>

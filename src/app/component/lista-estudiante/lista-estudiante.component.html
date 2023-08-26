@@ -1,0 +1,73 @@
+<app-navbar></app-navbar>
+<div class="container my-5">
+  <div class="card">
+    <div class="card-header">
+      <h5 class="card-title text-center">Panel de Control de Estudiantes</h5>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col">Estudiante</th>
+              <th scope="col" *ngIf="isAdmin">Cédula Estudiante</th>
+              <th scope="col" *ngIf="isAdmin">Email Estudiante</th>
+              <th scope="col" *ngIf="isAdmin">Edad Estudiante</th>
+              <th scope="col" *ngIf="isAdmin">Número del Estudiante</th>
+              <th scope="col" *ngIf="isAdmin">Representante</th>
+              <th scope="col" *ngIf="isAdmin">Cédula Representante</th>
+              <th scope="col" *ngIf="isAdmin">Email Representante</th>
+              <th scope="col" *ngIf="isAdmin">Número del Representante</th>
+              <th scope="col" *ngIf="isAdmin">Institución</th>
+              <th scope="col" *ngIf="isAdmin">Tipo Institución</th>
+              <th scope="col" *ngIf="isAdmin">Sección</th>
+              <th scope="col">Materias Nivelación</th>
+              <th scope="col" *ngIf="isAdmin">Nivel de estudio</th>
+              <th scope="col" *ngIf="isAdmin">Ciudad y Sector</th>
+              <th scope="col" *ngIf="isAdmin">Dirección</th>
+              <th scope="col" *ngIf="isAdmin">Modalidad</th>
+              <th scope="col">Horario</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let usuario of estudianteList">
+              <th scope="row" class="align-middle">{{ usuario.id_estudiante }}</th>
+              <td class="align-middle">{{ usuario.nombre_estudiante }}</td>
+              <td class="align-middle" *ngIf="isAdmin">{{ usuario.cedula_estudiante }}</td>
+              <td class="align-middle" *ngIf="isAdmin">{{ usuario.email_estudiante }}</td>
+              <td class="align-middle" *ngIf="isAdmin">{{ usuario.edad_estudiante }}</td>
+              <td class="align-middle" *ngIf="isAdmin">{{ usuario.numero_contacto }}</td>
+              <td class="align-middle" *ngIf="isAdmin">{{ usuario.nombre_representante }}</td>
+              <td class="align-middle" *ngIf="isAdmin">{{ usuario.cedula_representante }}</td>
+              <td class="align-middle" *ngIf="isAdmin">{{ usuario.email_representante }}</td>
+              <td class="align-middle" *ngIf="isAdmin">{{ usuario.numero_contactor }}</td>
+              <td class="align-middle" *ngIf="isAdmin">{{ usuario.institucion }}</td>
+              <td class="align-middle" *ngIf="isAdmin">{{ usuario.tipo_institucionId.nombre_tipo_institucion }}</td>
+              <td class="align-middle" *ngIf="isAdmin">{{ usuario.seccionId.nombre_seccion }}</td>
+              <td class="align-middle">{{ usuario.nivelacion_materia }}</td>
+              <td class="align-middle" *ngIf="isAdmin">
+                {{ usuario.escuelaId.nivel_escuela }} -
+                {{ usuario.colegioId.nivel_colegio }} -
+                {{ usuario.universidadId.nivel_universidad }}
+              </td>
+              <td class="align-middle" *ngIf="isAdmin">{{ usuario.ciudad }}, {{ usuario.sectorId.nombre_sector }}</td>
+              <td class="align-middle" *ngIf="isAdmin">{{ usuario.direccion }}</td>
+              <td class="align-middle" *ngIf="isAdmin">{{ usuario.modalidadId.nombre_modalidad }}</td>
+              <td class="align-middle">{{ usuario.horarioId.tiempo }}</td>
+              <td class="align-middle" *ngIf="isAdmin">
+                <div class="btn-group d-flex">
+                  <button class="btn btn-danger btn-sm" (click)="usuario.id_estudiante !== undefined ? borrarRegistro(usuario.id_estudiante) : null">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                      <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+                    </svg>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

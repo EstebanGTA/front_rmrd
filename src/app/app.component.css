@@ -1,0 +1,7 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
+*{
+    font-family: 'Poppins';
+}
+.shadowss {
+  box-shadow: -20px 20px 8px -8px rgba(0, 0, 0, 0.2);
+}

@@ -1,0 +1,72 @@
+<app-navbar></app-navbar>
+
+<div class="container mt-4">
+  <div class="card bg-light">
+    <div class="card-header text-center">
+      <h5>Filtro</h5>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-lg-1 col-md-2">
+          <label for="buscador" class="form-label">Nombre: </label>
+        </div>
+        <div class="col-lg-11 col-md-10">
+          <input id="buscador" type="text" class="form-control" [(ngModel)]="nombre" placeholder="Buscar por nombre de estudiante" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container my-5">
+  <div class="card">
+    <div class="card-header">
+      <h5 class="card-title text-center">Panel de Control de Informes</h5>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Estudiante</th>
+              <th scope="col">Fecha</th>
+              <th scope="col">Instructor</th>
+              <th scope="col">Hora</th>
+              <th scope="col">Código</th>
+              <th scope="col">Materia</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let info of informeList | buscadorInforme : nombre ">
+              <th scope="row" class="align-middle">{{ info.id_informe }}</th>
+              <td class="align-middle">{{ info.estudiante }}</td>
+              <td class="align-middle">{{ info.fecha }}</td>
+              <td class="align-middle">{{ info.instructor }}</td>
+              <td class="align-middle">{{ info.hora }}</td>
+              <td class="align-middle">{{ info.codigo }}</td>
+              <td class="align-middle">{{ info.materia}}</td>
+              <td class="align-middle">
+                <div class="btn-group d-flex">
+                  <button class="btn btn-danger btn-sm" (click)="info.id_informe !== undefined ? borrarInforme(info.id_informe) : null">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                      <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+                    </svg>
+                  </button>
+                </div>
+              </td>
+              <td class="align-middle">
+                <button class="btn btn-primary btn-sm" routerLink="/component/detalle/{{info.id_informe}}">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                    <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+                    <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+                  </svg>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
